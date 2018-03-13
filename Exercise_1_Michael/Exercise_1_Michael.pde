@@ -3,7 +3,7 @@
 // A beautiful scenery, minus the sun.
 
 void setup() {
- size(800, 600); 
+ size(800, 600);
 }
 
 void draw(){
@@ -20,7 +20,7 @@ void draw(){
   rect(0, 300, 800, 300);
   // House
   fill(240, 97, 123);
-  rect(550, 250, 150, 125); 
+  rect(550, 250, 150, 125);
   // Door
   fill(255, 255, 255);
   rect(612, 325, 25, 50);
