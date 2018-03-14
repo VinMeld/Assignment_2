@@ -1,14 +1,14 @@
 // Michael Lam
 // March 7, 2018
+// Last updated March 14, 2018.
 // A beautiful scenery, minus the sun.
 
 void setup() {
  size(800, 600);
+ noStroke();
 }
 
 void draw(){
-  // Removes stroke lines
-  strokeWeight(0);
   // Sky
   fill(119, 176, 245);
   rect(0, 0, 800, 300);
