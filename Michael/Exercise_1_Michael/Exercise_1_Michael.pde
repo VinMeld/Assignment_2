@@ -1,14 +1,14 @@
 // Michael Lam
 // March 7, 2018
+// Last updated March 14, 2018.
 // A beautiful scenery, minus the sun.
 
 void setup() {
- size(800, 600); 
+ size(800, 600);
+ noStroke();
 }
 
 void draw(){
-  // Removes stroke lines
-  strokeWeight(0);
   // Sky
   fill(119, 176, 245);
   rect(0, 0, 800, 300);
@@ -20,7 +20,7 @@ void draw(){
   rect(0, 300, 800, 300);
   // House
   fill(240, 97, 123);
-  rect(550, 250, 150, 125); 
+  rect(550, 250, 150, 125);
   // Door
   fill(255, 255, 255);
   rect(612, 325, 25, 50);

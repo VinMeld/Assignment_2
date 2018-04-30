@@ -1,10 +1,11 @@
 // Michael Lam
 // March 8, 2018
+// Last updated March 14, 2018.
 // Beautiful, colourful arcs. Vinay.
 
 void setup() {
+  size(800, 600);
   background(255);
- size(800, 600); 
 }
 
 void draw(){
@@ -34,3 +35,8 @@ void draw(){
   stroke(255, 0, 255);
   arc(222+50, 290+50, 650, 650, 0, PI-HALF_PI);
 }
+
+/* Issues
+- Bad coding practices.
+- Arcs are not similar.
+*/
