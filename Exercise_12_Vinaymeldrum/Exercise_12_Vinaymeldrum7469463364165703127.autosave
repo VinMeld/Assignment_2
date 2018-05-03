@@ -4,25 +4,23 @@ int decider;
 int numberOfCapital, numberOfVowels, maxLetters, punctuationCount, amountOfWords, index;
 void setup() {
   background(0);
-  String ot[] = loadStrings("othello.txt");
   String illiad[] = loadStrings("illiad.txt");
   String romeo[] = loadStrings("romeoAndJuliet.txt");
   String the[] = loadStrings("theOdyssey.txt");
   String hamlet[] = loadStrings("hamlet.txt");
   String macbeth[] = loadStrings("macbeth.txt");
-  decider = (int)random(0, 5);
-  if (decider == 0) {
-    sentence = ot;
-  } else if (decider == 1) {
+  decider = (int)random(1,5);
+  if (decider == 1){
     sentence = illiad;
-  } else if (decider ==2) {
-    sentence = romeo;
-  } else if (decider ==3) {
-    sentence = the;
-  } else if (decider == 4) {
-    sentence = hamlet;
-  } else {
-    sentence = macbeth;
+  }else if (decider ==2){
+  sentence = romeo;
+  }
+  else if (decider ==3){
+  sentence = the;
+  }else if (decider == 4){
+  sentence == hamlet;
+  }else{
+    sentence == macbeth;
   }
   size(600, 600);
   lengthOfSentence();
@@ -38,12 +36,13 @@ void draw() {
 }
 
 void lengthOfSentence() {
-  text("Length of the sentence: " + sentence.length + " characters", 100, 200);
+  sentence = loadStrings("othello.txt")
+  text("Length of the sentence: " + sentence.length() + " characters", 100, 200);
 }
 
 void capitalLetters() {
   //Looping over the length of the string.
-  for (int i = 0; i < sentence.length; i++) {
+  for (int i = 0; i < sentence.length(); i++) {
     //Making the string a character. char means character.
     //So, it will become c will become the character based off of how far you
     //are in the loop cause of the charAt(i).
@@ -58,7 +57,7 @@ void capitalLetters() {
 }
 
 void vowels() {
-  for (int i = 0; i < sentence.length; i++) {
+  for (int i = 0; i < sentence.length(); i++) {
     char c = sentence.charAt(i);
     if (c == 'a' || c == 'A' || c == 'e' || c == 'E' || c == 'i' || c == 'I' || c == 'o' || c == 'O' || c == 'u' || c == 'U') {
       numberOfVowels++;
@@ -68,7 +67,7 @@ void vowels() {
 }
 
 void wordCount() {
-  for (int i = 0; i < sentence.length; i++) {
+  for (int i = 0; i < sentence.length(); i++) {
     String[] list = split(sentence, ' ');
     amountOfWords = list.length;
   }
@@ -76,7 +75,7 @@ void wordCount() {
 }
 
 void punctuation() {
-  for (int i = 0; i < sentence.length; i++) {
+  for (int i = 0; i < sentence.length(); i++) {
     char c = sentence.charAt(i);
     if (c == '\'' || c == ':' || c ==  ';' || c == '.' || c == ',' || c == '!' || c == '?') {
       punctuationCount++;
