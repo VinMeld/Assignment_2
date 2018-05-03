@@ -1,10 +1,7 @@
 String sentence = "Do you want to build a snowman?";
 String sentenceLength = sentence;
-char[] alphabet = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
-char[] charSentence = sentence.toCharArray();
-int[] allLetters = new int [alphabet.length()];
 String[] sentenceArray = new String[sentenceLength.length()];
-int numberOfCapital, numberOfVowels, mostOccuringLetter, punctuationCount, amountOfWords;
+int numberOfCapital, numberOfVowels, maxLetters, punctuationCount, amountOfWords, index;
 
 void setup() {
   background(0);
@@ -12,18 +9,18 @@ void setup() {
   lengthOfSentence();
   capitalLetters();
   vowels();
-  mostUsedLetter();
-  punctuation();
   wordCount();
+  punctuation();
+  mostUsedLetter();
 }
 
 void draw() {
-  text(sentence, 100, 100);
-  noLoop(); //draw doesn't need to happen for this exercise
+  text("Sentence: " + sentence, 100, 150);
+  noLoop();
 }
 
 void lengthOfSentence() {
-  text("Length of the sentence: " + sentenceLength.length(), 100, 200);
+  text("Length of the sentence: " + sentenceLength.length() + " characters", 100, 200);
 }
 
 void capitalLetters() {
@@ -39,7 +36,7 @@ void capitalLetters() {
       numberOfCapital++;
     }
   }
-  text("Number of capital letters: " + numberOfCapital, 100, 300);
+  text("Number of capital letters: " + numberOfCapital, 100, 250);
 }
 
 void vowels() {
@@ -49,17 +46,15 @@ void vowels() {
       numberOfVowels++;
     }
   }
-  text("Number of vowels: " + numberOfVowels, 100, 400);
+  text("Number of vowels: " + numberOfVowels, 100, 300);
 }
 
-void mostUsedLetter() {
-  for (int i = 0; i < alphabet.length; i++) {
-    if (alphabet[i] == charSentence[]) {
-      allLetters[i] += 1;
-    } else {
-    }
-    
+void wordCount() {
+  for (int i = 0; i < sentence.length(); i++) {
+    String[] list = split(sentence, ' ');
+    amountOfWords = list.length;
   }
+  text("Number of words in sentence: " + amountOfWords, 100, 350);
 }
 
 void punctuation() {
@@ -69,13 +64,26 @@ void punctuation() {
       punctuationCount++;
     }
   }
-  text("Number of punctuation marks: " + punctuationCount, 300, 400);
+  text("Number of punctuation marks: " + punctuationCount, 100, 400);
 }
 
-void wordCount() {
-  for (int i = 0; i < sentence.length(); i++) {
-    String[] list = split(sentence, ' ');
-    amountOfWords = list.length;
+void mostUsedLetter() {
+  //Lowercase
+  char[] lowercaseArray = sentence.toLowerCase().toCharArray();
+  int[] allLetters = new int [26];
+  for (int i = 0; i < lowercaseArray.length; i++) {
+    //Making sure it is a letter  
+    if (lowercaseArray[i] >= 'a' && lowercaseArray[i] <='z') {
+      //ASCII value. Subtract a from anything and you get the correct index. a - b = 1. a - a = 0.
+      allLetters[lowercaseArray[i]-'a']++;
+    }
+  } //maxLetters, index
+  for (int i = 0; i < allLetters.length; i++) {
+    if (allLetters[i] > maxLetters) {
+      maxLetters = allLetters[i];
+      index = i;
+    }
   }
-  text("Number of words in sentence: " + amountOfWords, 100, 500);
+  char mostOccuringLetter = char('a' + index);
+  text("Most occuring letter: " + mostOccuringLetter + " has occured " + maxLetters + " times.", 100, 450);
 }
