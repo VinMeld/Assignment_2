@@ -1,23 +1,43 @@
+// Michael Lam & Vinay Meldrum
+// May 4, 2018
+// This program loads a text file and displays its characteristics, such as its character count
+
+// Declaring variables
 String[] sentence;
-int decider;
-<<<<<<< HEAD
 String txt;
-=======
->>>>>>> e58cf5b682564164549dfff73ede608032bd5f06
-//String[] sentenceArray = new String[sentenceLength.length()];
-int numberOfCapital, numberOfVowels, maxLetters, punctuationCount, amountOfWords, index;
+int decider, numberOfCapital, numberOfVowels, maxLetters, punctuationCount, amountOfWords, index;
+
+// Loading files
+String ot[] = loadStrings("othello.txt");
+String illiad[] = loadStrings("illiad.txt");
+String romeo[] = loadStrings("romeoAndJuliet.txt");
+String the[] = loadStrings("theOdyssey.txt");
+String hamlet[] = loadStrings("hamlet.txt");
+String macbeth[] = loadStrings("macbeth.txt");
+
+// Initial setup
 void setup() {
   background(0);
-  String ot[] = loadStrings("othello.txt");
-  String illiad[] = loadStrings("illiad.txt");
-  String romeo[] = loadStrings("romeoAndJuliet.txt");
-  String the[] = loadStrings("theOdyssey.txt");
-  String hamlet[] = loadStrings("hamlet.txt");
-  String macbeth[] = loadStrings("macbeth.txt");
+  size(600, 600);
+  selectFile();
+  lengthOfText();
+  capitalLetters();
+  vowels();
+  wordCount();
+  punctuation();
+  mostUsedLetter();
+}
+
+// Not used in program
+void draw() {
+  noLoop();
+}
+
+// Randomly selects a file
+void selectFile() {
   decider = (int)random(0, 5);
   if (decider == 0) {
     sentence = ot;
-<<<<<<< HEAD
     txt = join(sentence, "\n");
     text("File opened: othello.txt", 100, 150);
   } else if (decider == 1) {
@@ -41,48 +61,17 @@ void setup() {
     txt = join(sentence, "\n");
     text("File opened: macbeth.txt", 100, 150);
   }
-
-=======
-  } else if (decider == 1) {
-    sentence = illiad;
-  } else if (decider ==2) {
-    sentence = romeo;
-  } else if (decider ==3) {
-    sentence = the;
-  } else if (decider == 4) {
-    sentence = hamlet;
-  } else {
-    sentence = macbeth;
-  }
->>>>>>> e58cf5b682564164549dfff73ede608032bd5f06
-  size(600, 600);
-  lengthOfSentence();
-  capitalLetters();
-  vowels();
-  wordCount();
-  punctuation();
-  mostUsedLetter();
 }
 
-void draw() {
-  noLoop();
-}
-
-void lengthOfSentence() {
-<<<<<<< HEAD
+// Determines character count of text file
+void lengthOfText() {
   text("Length of text file: " + txt.length() + " characters", 100, 200);
-=======
-  text("Length of the sentence: " + sentence.length + " characters", 100, 200);
->>>>>>> e58cf5b682564164549dfff73ede608032bd5f06
 }
 
+// Determines the amount of capital characters
 void capitalLetters() {
   //Looping over the length of the string.
-<<<<<<< HEAD
   for (int i = 0; i < txt.length(); i++) {
-=======
-  for (int i = 0; i < sentence.length; i++) {
->>>>>>> e58cf5b682564164549dfff73ede608032bd5f06
     //Making the string a character. char means character.
     //So, it will become c will become the character based off of how far you
     //are in the loop cause of the charAt(i).
@@ -96,14 +85,10 @@ void capitalLetters() {
   text("Number of capital letters: " + numberOfCapital, 100, 250);
 }
 
+// Determines the amount of vowels
 void vowels() {
-<<<<<<< HEAD
   for (int i = 0; i < txt.length(); i++) {
     char c = txt.charAt(i);
-=======
-  for (int i = 0; i < sentence.length; i++) {
-    char c = sentence.charAt(i);
->>>>>>> e58cf5b682564164549dfff73ede608032bd5f06
     if (c == 'a' || c == 'A' || c == 'e' || c == 'E' || c == 'i' || c == 'I' || c == 'o' || c == 'O' || c == 'u' || c == 'U') {
       numberOfVowels++;
     }
@@ -111,35 +96,28 @@ void vowels() {
   text("Number of vowels: " + numberOfVowels, 100, 300);
 }
 
+// Determines the amount of words
 void wordCount() {
-<<<<<<< HEAD
   for (int i = 0; i < txt.length(); i++) {
     String[] list = split(txt, ' ');
-=======
-  for (int i = 0; i < sentence.length; i++) {
-    String[] list = split(sentence, ' ');
->>>>>>> e58cf5b682564164549dfff73ede608032bd5f06
     amountOfWords = list.length;
     text("Number of words: " + amountOfWords, 100, 350);
   }
 }
 
+// Determines the amount of punctuation marks
 void punctuation() {
-<<<<<<< HEAD
   for (int i = 0; i < txt.length(); i++) {
     char c = txt.charAt(i);
-=======
-  for (int i = 0; i < sentence.length; i++) {
-    char c = sentence.charAt(i);
->>>>>>> e58cf5b682564164549dfff73ede608032bd5f06
     if (c == '\'' || c == ':' || c ==  ';' || c == '.' || c == ',' || c == '!' || c == '?') {
       punctuationCount++;
     }
-    //text("Number of punctuation marks: " + punctuationCount, 100, 400);
+    text("Number of punctuation marks: " + punctuationCount, 100, 400);
     println("Number of punctuation marks: " + punctuationCount);
   }
 }
 
+// Determines the most frequently occuring letter
 void mostUsedLetter() {
   //Lowercase
   char[] lowercaseArray = txt.toLowerCase().toCharArray();
@@ -157,14 +135,7 @@ void mostUsedLetter() {
       index = i;
     }
     char mostOccuringLetter = char('a' + index);
-    //text("Most occuring letter: " + mostOccuringLetter + " has occured " + maxLetters + " times.", 100, 450);
     text("Most occuring letter: " + mostOccuringLetter + " has occured " + maxLetters + " times.", 100, 450);
     println("Most occuring letter: " + mostOccuringLetter + " has occured " + maxLetters + " times.");
   }
-<<<<<<< HEAD
 }
-=======
-  char mostOccuringLetter = char('a' + index);
-  text("Most occuring letter: " + mostOccuringLetter + " has occured " + maxLetters + " times.", 100, 450);
-}
->>>>>>> e58cf5b682564164549dfff73ede608032bd5f06
