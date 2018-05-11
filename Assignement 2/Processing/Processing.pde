@@ -35,26 +35,30 @@ class Buttons {
 }
 
 ArrayList<Buttons> b = new ArrayList<Buttons>();
+String userAPassword = "CatsAreGood";
+String userBPassword = "DogsAreBad";
+String superiorPassword = "ChildrenCanBeAnnoying";
 
 void settings() {
   size(600, 600);
 }
 
 void setup() {
-  //  b1 = new Buttons(0, 0, 300, "Albert", 40);
-  b.add(new Buttons(255, 255, 255, "df", 50));
+  int x = 0;
+  b.add(new Buttons(x, x, 255, "df", 20));
+  b.add(new Buttons(300, 300, 255, "cars", 20));
   println(b);
 }
 
 void draw() {
   background(0);
-  //for (Buttons p : b) {
-  //  p.addButton();
-  //}
-  //b.addButton();
   Buttons b1 = b.get(0);
+  Buttons b2 = b.get(1);
   b1.addButton();
+  b2.addButton();
+  println(b.size());
 }
 
-void mousePressed() {
+void mouseClicked() {
+
 }
