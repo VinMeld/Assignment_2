@@ -1,66 +1,7 @@
-class User {
-  String username = "";
-  String password = "";
-  User(String tempUser, String tempPassword) {
-    username = tempUser;
-    password = tempPassword;
-  }
-  boolean comparePassword(String password) {
-    if (password.length() <4) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-  boolean compuiareLogin(String username) {
-    if (username.length() <4) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-}
- 
-class Buttons {
-  float x, y, size, textFontSize;
-  String input;
-  Buttons(float tempX, float tempY, float tempSize, String tempinput, int tempTextSize) {
-    x = tempX;
-    y = tempY;
-    size = tempSize;
-    input = tempinput;
-    textFontSize = tempTextSize;
-  }
- 
-  void addButton() {
-    fill(255);
-    rect(x, y, size, size);
-    fill(0);
-    textAlign(CENTER, CENTER);
-    textSize(textFontSize);
-    text(input, x+size/2, y+size/2);
-    //text(input, sqrt(pow(size/2, 2) * 2)+x-30, sqrt(pow(size/2, 2) * 2)+y-15);
-    //text(input, x, y);
-  }
- 
-  void removeButton() {
-    y -= 1000;
-  }
- 
-  void returnButton() {
-    y += 1000;
-  }
-  boolean press() {
-    if (mouseX > x && mouseX < x+size && mouseY > y && mouseY < y+size) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-}
- 
+User[] listOfUsers = new User[4]; 
 Buttons[] button = new Buttons[16];
-int screenDecider = 1;
+User selectedUser = null;
+int screenDecider = 0;
 boolean loggedIn;
 boolean userNameEntered;
 String userInputName = "";
@@ -68,7 +9,7 @@ String userInputPassword = "";
 void settings() {
   size(600, 600);
 }
- 
+
 void setup() {
   button[0] = new Buttons(150, 250, 100, "A Super", 18);
   button[1] = new Buttons(350, 250, 100, "B Super", 18);
@@ -86,8 +27,14 @@ void setup() {
   button[13] = new Buttons(0, 300, 100, "Exercise_10", 18);
   button[14] = new Buttons(0, 400, 100, "Exercise_11", 18);
   button[15] = new Buttons(0, 500, 100, "Exercise_12", 18);
+
+
+  listOfUsers[0] = new User("", "de", 2);
+  listOfUsers[1] = new User("Marie", "ab", 12);
+  listOfUsers[2] = new User("John", "tri", 2);
+  listOfUsers[3] = new User("Bertha", "boi", 1 );
 }
- 
+
 void draw() {
   background(0);
   if (loggedIn) {
@@ -115,7 +62,13 @@ void keyPressed() {
   if (!loggedIn) {
     if (!userNameEntered) {
       if (key == RETURN || key == ENTER) {
-        userNameEntered = true;
+        for (int i = 0; i < listOfUsers.length; i++) {
+          if (listOfUsers[i].matchUsername(userInputName)) {
+            userNameEntered = true;
+            selectedUser = listOfUsers[i];
+            break;
+          }
+        }
       } else {
         if (key==BACKSPACE) {
           userInputName = userInputName.substring(0, max(0, userInputName.length()-2));
@@ -125,7 +78,10 @@ void keyPressed() {
       }
     } else {
       if (key == RETURN || key == ENTER) {
-        loggedIn = true;
+        if (selectedUser.comparePassword(userInputPassword)) {
+          loggedIn = true;
+          screenDecider = selectedUser.getNextScreen();
+        }
       } else {
         if (key==BACKSPACE) {
           userInputPassword = userInputPassword.substring(0, max(0, userInputPassword.length()-2));
@@ -152,17 +108,17 @@ void keyPressed() {
 // Button 13 = Exercise_10
 // Button 14 = Exercise_11
 // Button 15 = Exercise_12
- 
- 
+
+
 //---------------------------------------------
- 
- 
+
+
 // Screen decider 1 = Superior
 // SD2 = User A superior
 // SD3 - 11 = Set A exercises
 // SD12 = B main
 // SD13 - 18 = Set B exercises
-// SD19 = User A main
+// SD19 = User B main
 void mousePressed() {
   //if (screenDecider == 1) {
   if (button[0].press() == true) {
@@ -212,7 +168,7 @@ void mousePressed() {
     screenDecider = 15;
   }
 }
- 
+
 void removeExerciseAButtons() {
   button[3].removeButton();
   button[4].removeButton();
@@ -222,7 +178,7 @@ void removeExerciseAButtons() {
   button[8].removeButton();
   button[9].removeButton();
 }
- 
+
 void removeExerciseBButtons() {
   button[10].removeButton();
   button[11].removeButton();
@@ -231,7 +187,7 @@ void removeExerciseBButtons() {
   button[14].removeButton();
   button[15].removeButton();
 }
- 
+
 void superior() {
   if (screenDecider == 1) {
     button[0].addButton();
@@ -242,7 +198,7 @@ void userB() {
   if (screenDecider == 3) {
     button[1].addButton();
   }
-  if (screenDecider == 19){
+  if (screenDecider == 19) {
     button[10].addButton();
   }
   if (screenDecider == 12) {
@@ -265,13 +221,13 @@ void userB() {
     //run Exercise_12
   }
 }
- 
+
 void userA() {
   if (screenDecider == 2) {
     button[2].addButton();
   }
-  if (screenDecider == 18){
-     button[2].addButton();
+  if (screenDecider == 18) {
+    button[2].addButton();
   }
   if (screenDecider == 4) {
     button[3].addButton();
@@ -294,7 +250,7 @@ void userA() {
   if (screenDecider == 8) {
     //run Exercise_4
   }
- 
+
   if (screenDecider == 9) {
     //run Exercise_5
   }
