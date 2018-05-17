@@ -6,7 +6,7 @@ class User {
   User(String tempUser, String tempPassword, int tempNextScreen) {
     nextScreen = tempNextScreen;
     username = tempUser;
-    password = encrpyt(tempPassword);
+    writeEncryptedPasswordToFile(encrpyt(tempPassword));
   }
   String encrpyt (String password) {
     String encryptedPassword = "";
@@ -16,13 +16,25 @@ class User {
     println(encryptedPassword);
     return encryptedPassword;
   }
-  boolean comparePassword(String password) {
-    return this.password.equals(encrpyt(password));
+  void writeEncryptedPasswordToFile(String password) {
+    PrintWriter passwordsWriter;
+    passwordsWriter = createWriter(username + ".txt");
+    passwordsWriter.println(password);
+    passwordsWriter.flush();
+    passwordsWriter.close();
+  }
+  boolean comparePassword(String password, String username) {
+    String[] readPassword = loadStrings(username + ".txt");
+    return readPassword[0].equals(encrpyt(password));
   }
   boolean matchUsername(String username) {
     return this.username.equals(username);
   }
   int getNextScreen() {
     return nextScreen;
+  }
+  void deletePasswords(){
+      File passwordFile = new File (dataPath(""), username + ".txt");
+      passwordFile.delete();
   }
 }
