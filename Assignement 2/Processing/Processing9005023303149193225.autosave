@@ -32,7 +32,7 @@ void setup() {
   button[16] = new Buttons(0, 500, 100, "Back", 18);
 
   listOfUsers[0] = new User(userList[0], "de", 2);
-  listOfUsers[1] = new User(userList[1], "ab", 12);
+  listOfUsers[1] = new User(userList[1], "ab", 1);
   listOfUsers[2] = new User(userList[2], "tri", 2);
   listOfUsers[3] = new User(userList[3], "super", 1);
 }
@@ -123,12 +123,11 @@ void keyPressed() {
 // Screen decider 1 = Superior
 // SD2 = User A superior
 // SD3 - 11 = Set A exercises
-// SD12 = Displays Exercise Set B list.
+// SD12 = B main
 // SD13 - 18 = Set B exercises
 // SD19 = User B main
 
 void mousePressed() {
-  //if (screenDecider == 1) {
   if (button[0].press() == true) {
     button[0].removeButton();
     button[1].removeButton();
@@ -171,26 +170,19 @@ void mousePressed() {
   } else if (button[12].press() == true) {
     removeExerciseBButtons();
     screenDecider = 14;
-  } else if (button[13].press() == true) {
+  } else if (button[12].press() == true) {
     removeExerciseBButtons();
     screenDecider = 15;
-  } else if (button[14].press() == true) {
-    removeExerciseBButtons();
-    screenDecider = 16;
-  } else if (button[15].press() == true) {
-    removeExerciseBButtons();
-    screenDecider = 17;
-  } else if  (button[16].press() == true) {
-    print(screenDecider);
+  } else if (thisUser == 1 && button[16].press() == true) {
     button[16].removeButton();
-    screenDecider = listOfUsers[thisUser].getNextScreen();
-    println(screenDecider); //<>//
+    screenDecider = 12;
   }
 }
 void whichUser() {
   for (int i = 0; i < listOfUsers.length; i++) {
     if (userInputName.equals(userList[i])) {
       thisUser = i;
+      println(thisUser);
     }
   }
 }
@@ -214,7 +206,7 @@ void removeExerciseBButtons() {
 }
 
 void superior() {
-  if (screenDecider == 1) {
+  if (screenDecider == screen.super_user.ordinal()) {
     button[0].draw();
     button[1].draw();
   }
@@ -229,38 +221,32 @@ void userB() {
   if (screenDecider == 12) {
     button[11].draw();
     button[12].draw();
-    button[13].draw();
-    button[14].draw();
-    button[15].draw();
   } else if (screenDecider == 13) {
     //Exercise_8
-    println("Exercise_8");
     button[16].draw();
   } else if (screenDecider == 14) {
-    //run Exercise_9
-    println("Exercise_9");
-
+    //run Exercise_8
     button[16].draw();
   } else if (screenDecider == 15) {
-    //run Exercise_10
-    println("Exercise_10");
-
+    //run Exercise_9
     button[16].draw();
   } else if (screenDecider == 16) {
-    //run Exercise_11
-    println("Exercise_11");
-
+    //run Exercise_10
     button[16].draw();
   } else if (screenDecider == 17) {
+    //run Exercise_11
+    button[16].draw();
+  } else if (screenDecider == 18) {
     //run Exercise_12
-    println("Exercise_12");
-
     button[16].draw();
   }
 }
 
 void userA() {
-  if (screenDecider == 2) {
+  if (screenDecider == screen.set_A.ordinal()) {
+    button[2].draw();
+  }
+  if (screenDecider == 18) {
     button[2].draw();
   }
   if (screenDecider == 4) {
@@ -301,4 +287,13 @@ void userA() {
     //run Exercise_7
     button[16].draw();
   }
+}
+// Screen decider 1 = Superior
+// SD2 = User A superior
+// SD3 - 11 = Set A exercises
+// SD12 = B main
+// SD13 - 18 = Set B exercises
+// SD19 = User B main
+public enum screen{
+    super_user, set_A, Exercise_1;
 }

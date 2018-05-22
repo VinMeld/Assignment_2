@@ -8,7 +8,13 @@ class Buttons {
     input = tempinput;
     textFontSize = tempTextSize;
   }
-
+  void draw(){
+    if(y <=0){
+        returnButton(); 
+     }else{
+      addButton(); 
+     }
+  }
   void addButton() {
     fill(255);
     rect(x, y, size, size);
