@@ -22,8 +22,6 @@ class Buttons {
     textAlign(CENTER, CENTER);
     textSize(textFontSize);
     text(input, x+size/2, y+size/2);
-    //text(input, sqrt(pow(size/2, 2) * 2)+x-30, sqrt(pow(size/2, 2) * 2)+y-15);
-    //text(input, x, y);
   }
 
   void removeButton() {

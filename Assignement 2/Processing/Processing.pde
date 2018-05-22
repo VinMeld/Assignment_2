@@ -1,4 +1,4 @@
-User[] listOfUsers = new User[4]; 
+User[] listOfUsers = new User[4];  //<>//
 Buttons[] button = new Buttons[17];
 User selectedUser = null;
 int screenDecider = 0;
@@ -33,7 +33,7 @@ void setup() {
 
   listOfUsers[0] = new User(userList[0], "de", 2);
   listOfUsers[1] = new User(userList[1], "ab", 12);
-  listOfUsers[2] = new User(userList[2], "tri", 2);
+  listOfUsers[2] = new User(userList[2], "tri", 4);
   listOfUsers[3] = new User(userList[3], "super", 1);
 }
 
@@ -128,7 +128,6 @@ void keyPressed() {
 // SD19 = User B main
 
 void mousePressed() {
-  //if (screenDecider == 1) {
   if (button[0].press() == true) {
     button[0].removeButton();
     button[1].removeButton();
@@ -181,10 +180,9 @@ void mousePressed() {
     removeExerciseBButtons();
     screenDecider = 17;
   } else if  (button[16].press() == true) {
-    print(screenDecider);
     button[16].removeButton();
     screenDecider = listOfUsers[thisUser].getNextScreen();
-    println(screenDecider); //<>//
+    println(screenDecider);
   }
 }
 void whichUser() {
@@ -234,26 +232,32 @@ void userB() {
     button[15].draw();
   } else if (screenDecider == 13) {
     //Exercise_8
+    println(screenDecider);
+
     println("Exercise_8");
     button[16].draw();
   } else if (screenDecider == 14) {
     //run Exercise_9
     println("Exercise_9");
+    println(screenDecider);
 
     button[16].draw();
   } else if (screenDecider == 15) {
     //run Exercise_10
     println("Exercise_10");
+    println(screenDecider);
 
     button[16].draw();
   } else if (screenDecider == 16) {
     //run Exercise_11
     println("Exercise_11");
+    println(screenDecider);
 
     button[16].draw();
   } else if (screenDecider == 17) {
     //run Exercise_12
     println("Exercise_12");
+    println(screenDecider);
 
     button[16].draw();
   }
@@ -274,31 +278,89 @@ void userA() {
   }
   if (screenDecider == 5) {
     //run Exercise_1
+      strokeWeight(0);
+      //Top
+      fill (119, 176, 245);
+      rect(0, 0, 800, 300);
+
+      //Sun
+      fill(252, 245, 0);
+      ellipse(200, 300, 150, 150 );  
+      //Horizn line
+      fill(28, 234, 92);
+      rect(0, 300, 800, 300);
+      //House rect
+      fill(240, 97, 123);
+      rect(550, 250, 150, 125);
+      //Door
+      fill(255, 255, 255);
+      rect(612, 320, 35, 50);
+      //Doorknob
+      fill(0);
+      ellipse(622, 348, 10, 10);
+      //Triangle
+      fill(0);
+      triangle(625, 225, 545, 250, 705, 250);
+      //Sun ray 1 on left.
+      stroke(252, 245, 0);
+      strokeWeight(3);
+      line(90, 280, 200, 280);
+      line(90, 280-30, 200, 280);
+      line(90, 280-60, 200, 280);
+      line(90+10, 280-90, 200, 280);
+      line(90+40, 280-100, 200, 280);
+      line(90+80, 280-120, 200, 280);
+      line(90+120, 280-120, 200, 280);
+      line(90+140, 280-160, 200, 280);
+      /*line(90,280-160,200,280);
+       line(90,280-180,200,280);
+       line(90,280-220,200,280);
+       line(90,280-240,200,280);*/
+    
+    println("Exercise_1");
+    println(screenDecider);
     button[16].draw();
   }
   if (screenDecider == 6) {
     //run Exercise_2
+    println("Exercise_2");
+    println(screenDecider);
+
     button[16].draw();
   }
   if (screenDecider == 7) {
     //run Exercise_3
+    println("Exercise_3");
+    println(screenDecider);
+
     button[16].draw();
   }
   if (screenDecider == 8) {
     //run Exercise_4
+    println("Exercise_4");
+    println(screenDecider);
+
     button[16].draw();
   }
-
   if (screenDecider == 9) {
     //run Exercise_5
+    println("Exercise_5");
+    println(screenDecider);
+
     button[16].draw();
   }
   if (screenDecider == 10) {
     //run Exercise_6
+    println("Exercise_6");
+    println(screenDecider);
+
     button[16].draw();
   }
   if (screenDecider == 11) {
     //run Exercise_7
+    println("Exercise_7");
+    println(screenDecider);
+
     button[16].draw();
   }
 }
