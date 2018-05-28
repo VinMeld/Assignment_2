@@ -94,7 +94,12 @@ class Exercise8 {
   int decider = 0;
   //The other random integer that is displayed.
   int ran2;
-
+   
+  PApplet newParent = null;  
+    
+  public Exercise8(PApplet newParent){
+      this.newParent = newParent;
+   }
   void setup() {
     //Setting up the font.
     PFont f = createFont("Georgia", 15);
@@ -209,7 +214,7 @@ class Exercise8 {
 
   void Buttons() {
     //Shows the buttons
-    c = new GUIController (this);
+    c = new GUIController (newParent);
     division = new IFButton ("Division", 240, 583, 80, 17);
     notmath = new IFButton ("Non-Math", 320, 583, 80, 17);
     addition = new IFButton ("Addition", 0, 583, 80, 17);

@@ -16,7 +16,7 @@ Exercise4 exercise4 = new Exercise4();
 Exercise5 exercise5 = new Exercise5();
 Exercise6 exercise6 = new Exercise6();
 Exercise7 exercise7 = new Exercise7();
-Exercise8 exercise8 = new Exercise8();
+Exercise8 exercise8 = new Exercise8(this);
 Exercise9 exercise9 = new Exercise9();
 Exercise10 exercise10 = new Exercise10();
 Exercise11 exercise11 = new Exercise11();
@@ -37,6 +37,8 @@ void settings() {
 }
 
 void setup() {
+
+
   //Declraing the different buttons. The first 2 integers are the x and y, 3rd size, 4th the text and lastly the size of the text inside the square.
   button[0] = new Buttons(150, 250, 100, "A Super", 18);
   button[1] = new Buttons(350, 250, 100, "B Super", 18);
@@ -70,10 +72,8 @@ void draw() {
   //Doing the background 0 for only the exercises that need it.
   if (screenDecider != lastScreenDecider) {
     background(0);
-  }
-  strokeWeight(1);
-  stroke(1);
-  fill(255);
+  } 
+
   //If you are logged in, then run the different functions.
   if (loggedIn) {
     superior();
@@ -290,7 +290,7 @@ void userB() {
   } else if (screenDecider == 14) {
     //run Exercise_9
     exercise9.draw();
-    println("Exercise_9");
+    //println("Exercise_9");
     button[16].draw();
   } else if (screenDecider == 15) {
     //run Exercise_10
@@ -309,6 +309,7 @@ void userB() {
   } else if (screenDecider == 17) {
     //run Exercise_12
     //  println("Exercise_12");
+    exercise12.setup();
     exercise12.draw();
     button[16].draw();
   }
@@ -342,6 +343,7 @@ void userA() {
     button[16].draw();
   }
   if (screenDecider == 8) {//******************************************************************************************************************************************** Exercise_4
+    exercise4.setup();
     exercise4.draw();
     button[16].draw();
   }

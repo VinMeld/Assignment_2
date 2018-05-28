@@ -8,7 +8,6 @@ class Exercise10 {
 
   void setup() {
     background(0);
-    size(600, 600);
     lengthOfSentence();
     capitalLetters();
     vowels();
@@ -18,12 +17,12 @@ class Exercise10 {
   }
 
   void draw() {
-    text("Sentence: " + sentence, 100, 150);
+    text("Sentence: " + sentence, 300, 150);
     noLoop();
   }
 
   void lengthOfSentence() {
-    text("Length of the sentence: " + sentenceLength.length() + " characters", 100, 200);
+    text("Length of the sentence: " + sentenceLength.length() + " characters", 300, 200);
   }
 
   void capitalLetters() {
@@ -39,7 +38,7 @@ class Exercise10 {
         numberOfCapital++;
       }
     }
-    text("Number of capital letters: " + numberOfCapital, 100, 250);
+    text("Number of capital letters: " + numberOfCapital, 300, 250);
   }
 
   void vowels() {
@@ -49,7 +48,7 @@ class Exercise10 {
         numberOfVowels++;
       }
     }
-    text("Number of vowels: " + numberOfVowels, 100, 300);
+    text("Number of vowels: " + numberOfVowels, 300, 300);
   }
 
   void wordCount() {
@@ -57,7 +56,7 @@ class Exercise10 {
       String[] list = split(sentence, ' ');
       amountOfWords = list.length;
     }
-    text("Number of words in sentence: " + amountOfWords, 100, 350);
+    text("Number of words in sentence: " + amountOfWords, 300, 350);
   }
 
   void punctuation() {
@@ -67,7 +66,7 @@ class Exercise10 {
         punctuationCount++;
       }
     }
-    text("Number of punctuation marks: " + punctuationCount, 100, 400);
+    text("Number of punctuation marks: " + punctuationCount, 300, 400);
   }
 
   void mostUsedLetter() {
@@ -88,6 +87,6 @@ class Exercise10 {
       }
     }
     char mostOccuringLetter = char('a' + index);
-    text("Most occuring letter: " + mostOccuringLetter + " has occured " + maxLetters + " times.", 100, 450);
+    text("Most occuring letter: " + mostOccuringLetter + " has occured " + maxLetters + " times.", 300, 450);
   }
 }

@@ -9,6 +9,7 @@ class Exercise4 {
   float i = 0;
   float j =0;
   void setup() {
+    background(0);
   }
   void draw() {
     noStroke();
