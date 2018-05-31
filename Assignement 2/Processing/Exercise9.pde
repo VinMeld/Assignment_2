@@ -4,9 +4,11 @@ class Exercise9 {
   float[] yLines = new float[49];
   int top_bottom;
   void setup() {
+    background(255);
   }
   // Creates random point and draws a line to nearest wall
   void draw() {
+    fill(255);
     xValues();
     yValues();
     decidingWall();

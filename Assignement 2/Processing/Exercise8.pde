@@ -1,5 +1,5 @@
-class Exercise8 {
-  /******************************************************************************************************************************************************************************************************************************************************* //<>// //<>// //<>// //<>// //<>//
+class Exercise8 { //<>//
+  /******************************************************************************************************************************************************************************************************************************************************* //<>// //<>// //<>// //<>//
    Name: Vinay Meldrum
    
    Purpose: For ICS3U class. Because I want a good mark.^
@@ -35,7 +35,6 @@ class Exercise8 {
   //Start of math stuff***********************************************************************************************************************************
 
   //Sound
-  SoundFile Math;
   //Creating the GUI
   GUIController c;
   //Making the "variables" type thing for the buttons.
@@ -94,13 +93,14 @@ class Exercise8 {
   int decider = 0;
   //The other random integer that is displayed.
   int ran2;
-   
+
   PApplet newParent = null;  
-    
-  public Exercise8(PApplet newParent){
-      this.newParent = newParent;
-   }
+
+  public Exercise8(PApplet newParent) {
+    this.newParent = newParent;
+  }
   void setup() {
+    fill(255);
     //Setting up the font.
     PFont f = createFont("Georgia", 15);
     textFont(f);
@@ -122,9 +122,10 @@ class Exercise8 {
     trump = loadImage("Trump.png");
     usa = loadImage("Flag.png");
     wall = loadImage("Trump1.jpg");
-    thread("MathSong");
   }
   void draw() {
+    fill(255);
+
     PFont f = createFont("Georgia", 15);
     textFont(f);
     DisplayQuestions();
@@ -142,14 +143,6 @@ class Exercise8 {
         Gameover();
       }
     }
-  }
-  void MathSong() {
-
-    //if (decider == 1 || decider == 2 || decider == 3 || decider == 4 || decider == 0) {
-    //  Math.play();
-    //} else if (decider == 5) {
-    //  Math.stop();
-    //}
   }
   void Lifecontrol() {
     //Lifecontrol, so it displays it depending on how many you have. 
@@ -204,7 +197,7 @@ class Exercise8 {
     }
   }
   //Jump up and down in the game.
-   void move() {
+  void move() {
     if ((y += dir) < JUMP)  dir *= -1;
     else if (y > FLOOR) {
       dir = 0;
@@ -238,10 +231,10 @@ class Exercise8 {
       PFont l = createFont("Georgia", 15);
       textFont(l);
       textSize(15);
-      text("Welcome to my program. Here you can navigate to various different elements of my", 10, 15); 
-      text(" program. math with base and non-math games! HAVE FUN. ", 10, 30);
-      text("The first two numbers are in decimal. Figure out what they are in the specific finite field. ", 10, 55);
-      text ("That is for the math game.", 10, 70);
+      text("Welcome to my program. Here you can navigate to various different elements of my", 300, 15); 
+      text(" program. math with base and non-math games! HAVE FUN. ", 300, 30);
+      text("The first two numbers are in decimal. Figure out what they are in the specific finite field. ", 300, 55);
+      text ("That is for the math game.", 300, 70);
     }
     if (decider == 1) {
       background(0);

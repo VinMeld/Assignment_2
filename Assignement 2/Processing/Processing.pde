@@ -37,8 +37,6 @@ void settings() {
 }
 
 void setup() {
-
-
   //Declraing the different buttons. The first 2 integers are the x and y, 3rd size, 4th the text and lastly the size of the text inside the square.
   button[0] = new Buttons(150, 250, 100, "A Super", 18);
   button[1] = new Buttons(350, 250, 100, "B Super", 18);
@@ -69,16 +67,18 @@ void setup() {
 }
 
 void draw() {
+  fill(255);
   //Doing the background 0 for only the exercises that need it.
-  if (screenDecider != lastScreenDecider) {
+  boolean screenDeciderHasChanged = hasScreenDeciderChanged();
+  if (screenDeciderHasChanged || !loggedIn) {
     background(0);
   } 
 
   //If you are logged in, then run the different functions.
   if (loggedIn) {
     superior();
-    userA();
-    userB();
+    userA(screenDeciderHasChanged);
+    userB(screenDeciderHasChanged);
     whichUser();
   } else {
     //If not, then do the login screen.
@@ -269,7 +269,7 @@ void superior() {
     button[1].draw();
   }
 }
-void userB() {
+void userB(boolean tempScreenDeciderHasChanged) {
   //Displays buttons that I need. Aswell, it displays the desisired exercise. I wrapped all of the exercises as a seperate class and just ran them here.**************
   if (screenDecider == 3) {
     button[1].draw();
@@ -284,38 +284,47 @@ void userB() {
     button[14].draw();
     button[15].draw();
   } else if (screenDecider == 13) {
+    if (tempScreenDeciderHasChanged) {
+      exercise8.setup();
+    }
+    //Exercise_8
     exercise8.draw();
-    //println("Exercise_8");
     button[16].draw();
   } else if (screenDecider == 14) {
     //run Exercise_9
+    if (tempScreenDeciderHasChanged) {
+      exercise9.setup();
+    }
     exercise9.draw();
     //println("Exercise_9");
     button[16].draw();
   } else if (screenDecider == 15) {
     //run Exercise_10
     //println("Exercise_10");
-    if (hasScreenDeciderChanged()) {
+    if (tempScreenDeciderHasChanged) {
       exercise10.setup();
+      println(" Exercise_10 setup");
     }
-    exercise10.draw();
+    println(" Exercise_10 draw");
+
     button[16].draw();
   } else if (screenDecider == 16) {
-    //run Exercise_11
+    //run Exercise_11 Same as exercise 10
     //  println("Exercise_11");
-    exercise11.draw();
-
+    if (tempScreenDeciderHasChanged) {
+      exercise10.setup();
+    }
     button[16].draw();
   } else if (screenDecider == 17) {
     //run Exercise_12
-    //  println("Exercise_12");
-    exercise12.setup();
-    exercise12.draw();
+    if (tempScreenDeciderHasChanged) {
+      exercise12.setup();
+    }
     button[16].draw();
   }
 }
 
-void userA() {
+void userA(boolean tempScreenDeciderHasChanged) {
   //Displays buttons that I need. Aswell, it displays the desisired exercise. I wrapped all of the exercises as a seperate class and just ran them here.**************
 
   if (screenDecider == 2) {
@@ -343,7 +352,6 @@ void userA() {
     button[16].draw();
   }
   if (screenDecider == 8) {//******************************************************************************************************************************************** Exercise_4
-    exercise4.setup();
     exercise4.draw();
     button[16].draw();
   }
@@ -353,7 +361,6 @@ void userA() {
   }
   if (screenDecider == 10) {//**************************************************************************************************************************************************************** Exercise_6
     exercise6.draw();
-    //run Exercise_6
     button[16].draw();
   }
   if (screenDecider == 11) {//*************************************************************************************************************************************************************** Exercise_7

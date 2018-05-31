@@ -8,17 +8,17 @@ class Exercise10 {
 
   void setup() {
     background(0);
+    fill(255);
     lengthOfSentence();
     capitalLetters();
     vowels();
     wordCount();
     punctuation();
     mostUsedLetter();
+    text("Sentence: " + sentence, 300, 150);
   }
 
   void draw() {
-    text("Sentence: " + sentence, 300, 150);
-    noLoop();
   }
 
   void lengthOfSentence() {

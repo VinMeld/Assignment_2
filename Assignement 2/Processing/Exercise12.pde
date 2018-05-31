@@ -20,6 +20,7 @@ class Exercise12 {
 
   // Initial setup
   void setup() {
+    fill(255);
     background(0);
     println("1setup");
     ot = loadStrings("othello.txt");
@@ -154,7 +155,7 @@ class Exercise12 {
       }
       mostOccuringLetter = char('a' + index);
     }
-    text("Most occuring letter: " + mostOccuringLetter + " has occured " + maxLetters + " times.", 100, 450);
+    text("Most occuring letter: " + mostOccuringLetter + " has occured " + maxLetters + " times.", 300, 450);
     println("Most occuring letter: " + mostOccuringLetter + " has occured " + maxLetters + " times.");
   }
 }
