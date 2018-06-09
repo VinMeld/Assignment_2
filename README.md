@@ -6,8 +6,10 @@ These are the users and passwords:
 Super user(s):
 
 Username:
+Bertha
 
 Password:
+Super
 
 User A:
 
