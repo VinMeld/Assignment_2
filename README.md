@@ -29,18 +29,18 @@ Passwords:
 
 Screenshots:
 
-![Login](https://imgur.com/a/cY3Q5ZQ)
+![Login](https://i.imgur.com/ZoWFBPz.png)
 
 
-![Main](https://imgur.com/a/cY3Q5ZQ)
+![Main](https://i.imgur.com/0fnPHFf.png)
 
 
-![Set A](https://imgur.com/a/cY3Q5ZQ)
+![Set A](https://i.imgur.com/646LRdR.png)
 
 
-![Set B](https://imgur.com/a/cY3Q5ZQ)
+![Set B](https://i.imgur.com/qPXxgfH.png)
 
 
-![Example of Exercise 8](https://imgur.com/a/cY3Q5ZQ)
+![Example of Exercise 8](https://i.imgur.com/mhfvrDA.png)
 
 
